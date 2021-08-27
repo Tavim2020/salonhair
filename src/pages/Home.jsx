@@ -33,6 +33,18 @@ const ButtonOpenMenu = styled.div`
     svg{
         width: 3vw;
     }
+
+    @media(max-width: 950px){
+        width: 10vw;
+        height: 10vw;
+        position: fixed;
+        margin-top: 0vh;
+        right: 0%;
+
+        svg{
+            width: 7vw;
+        }
+    }
 `;
 
 

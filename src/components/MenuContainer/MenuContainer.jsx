@@ -36,6 +36,77 @@ const Menu = styled.section`
             opacity: 0;
         }
     }
+
+    @media(max-width: 449px){
+        width: 100vw;
+        height: 73vh;
+        transform: ${({menutrue}) => menutrue ? 'translateX(0%) translateY(-100%)' : 'translateX(0%) translateY(0%)'};
+        right: 0%;
+
+        @keyframes open{
+            to{
+                transition: 1s;
+                transform: translateX(0%) translateY(0%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes close{
+            to{
+                transition: transform 1s;
+                transform: translateX(0%)  translateY(-100%);
+                opacity: 0;
+            }
+        }
+    }
+
+    @media(min-width: 450px) and (max-width: 649px){
+        width: 100vw;
+        height: 82vh;
+        transform: ${({menutrue}) => menutrue ? 'translateX(0%) translateY(-100%)' : 'translateX(0%) translateY(0%)'};
+        right: 0%;
+
+        @keyframes open{
+            to{
+                transition: 1s;
+                transform: translateX(0%) translateY(0%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes close{
+            to{
+                transition: transform 1s;
+                transform: translateX(0%)  translateY(-100%);
+                opacity: 0;
+            }
+        }
+    }
+
+   
+
+    @media(min-width: 650px) and (max-width: 950px){
+        width: 100vw;
+        height: 96vh;
+        transform: ${({menutrue}) => menutrue ? 'translateX(0%) translateY(-100%)' : 'translateX(0%) translateY(0%)'};
+        right: 0%;
+
+        @keyframes open{
+            to{
+                transition: 1s;
+                transform: translateX(0%) translateY(0%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes close{
+            to{
+                transition: transform 1s;
+                transform: translateX(0%)  translateY(-100%);
+                opacity: 0;
+            }
+        }
+    }
 `;
 
 const IconClose = styled.div`
@@ -56,6 +127,22 @@ const IconClose = styled.div`
             transform: rotateZ(90deg);
         }
     }
+
+    @media(max-width: 950px){
+        width: 100%;
+        padding-top: 0vh;
+        height: 13vh;
+
+        img{
+            width: 10vw;
+            transition: transform 0.5s;
+            cursor: pointer;
+
+            &:hover{
+                transform: rotateZ(90deg);
+            }
+        }
+    }
 `;
 
 const Welcome = styled.h3`
@@ -64,6 +151,11 @@ const Welcome = styled.h3`
     font-size: 1.7vw;
     text-align: center;
     margin-top: 1vh;
+
+    @media(max-width: 950px){
+        font-size: 5vw;
+        margin-top: 1vh;
+    }
 `;
 
 const ContainerLogo = styled.div`
@@ -73,6 +165,15 @@ const ContainerLogo = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media(max-width: 950px){
+        margin: 0 auto;
+        width: 80%;
+        height: 15vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 `;
 
 const Contato = styled.div`
@@ -96,6 +197,28 @@ const Contato = styled.div`
         margin-left: 5.6vw;
         margin-top: 1vh;
         cursor: pointer;
+    }
+
+    @media(max-width: 950px){
+        margin: 0 auto;
+        width: 80%;
+        height: 12vh;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1.5vh;
+
+        h3{
+            font-size: 5vw;
+            margin-left: 0vw;
+            margin-top: 0vh;
+        }
+
+        img{
+            width: 5vw;
+            margin-left: 5vw;
+            margin-top: 0vh;
+        }
     }
 `;
 
@@ -139,9 +262,7 @@ const MenuContainer = () => {
 
             <ContainerLogo>
 
-                <MiniLogo 
-                width={'80%'}
-                height={'70%'}/>
+                <MiniLogo />
 
             </ContainerLogo>
 

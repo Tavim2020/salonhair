@@ -28,7 +28,7 @@ const ContainerRight = styled.div`
     }
 
 
-    @media(max-width: 950px){
+    @media(max-width: 501px){
         margin: 0 auto;
         width: 90%;
         height: 94vh;
@@ -36,7 +36,30 @@ const ContainerRight = styled.div`
         background-color: none;
         
         h3{
-            font-size: 6vw;
+            font-size: 6.5vw;
+            text-align: center;
+            margin-bottom: 5vh;
+        }
+
+        h2{
+            color: var(--beige);
+            font-family: var(--font-dancing);
+            font-size:7vw;
+            text-align: center;
+            margin-bottom: 5vh;
+        }
+    }
+
+
+    @media(min-width: 501px) and (max-width: 800px){
+        margin: 0 auto;
+        width: 90%;
+        height: 94vh;
+        margin-top: 3%;
+        background-color: none;
+        
+        h3{
+            font-size: 5.5vw;
             text-align: center;
             margin-bottom: 4vh;
         }
@@ -44,9 +67,31 @@ const ContainerRight = styled.div`
         h2{
             color: var(--beige);
             font-family: var(--font-dancing);
-            font-size:6.5vw;
+            font-size:6vw;
             text-align: center;
-            margin-bottom: 5vh;
+            margin-bottom: 4vh;
+        }
+    }
+
+    @media(min-width: 801px) and (max-width: 950px){
+        margin: 0 auto;
+        width: 90%;
+        height: 94vh;
+        margin-top: 3%;
+        background-color: none;
+        
+        h3{
+            font-size: 5vw;
+            text-align: center;
+            margin-bottom: 3vh;
+        }
+
+        h2{
+            color: var(--beige);
+            font-family: var(--font-dancing);
+            font-size:5.5vw;
+            text-align: center;
+            margin-bottom: 3vh;
         }
     }
     
@@ -59,10 +104,38 @@ const WrapperWoman = styled.div`
         display: none;
     }
    
-    @media(max-width: 950px){
+    @media(max-width: 500px){
         margin: 0 auto;
-        width: 45vw;
-        height: 30%;
+        width: 65vw;
+        height: 28%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 3vh;
+
+        img{
+            display: initial;
+        }
+    }
+
+    @media(min-width: 501px) and (max-width: 800px){
+        margin: 0 auto;
+        width: 55vw;
+        height: 32%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 3vh;
+
+        img{
+            display: initial;
+        }
+    }
+
+    @media(min-width: 801px) and (max-width: 950px){
+        margin: 0 auto;
+        width: 55vw;
+        height: 27%;
         display: flex;
         align-items: center;
         justify-content: center;

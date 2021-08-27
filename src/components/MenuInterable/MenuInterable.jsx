@@ -71,6 +71,25 @@ const Iterable = styled.div`
         color: var(--white);
         font-size: 1.55vw;
     }
+
+    @media(max-width: 950px){
+        justify-content: center;
+        padding-top: 1.5vh;
+        padding-bottom: 1.5vh;
+
+        img{
+            width: 6vw;
+            margin-right: 2vw;
+            margin-left: 2.5vw;
+            visibility: visible;
+            display: none;
+        }
+
+        h4{
+            font-size: 4.5vw;
+        }
+
+    }
 `;
 
 const MenuInterable = ({children, number}) => {

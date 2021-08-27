@@ -17,13 +17,37 @@ const LogoContainer = styled.div`
         margin-top: 6vh;
     }
 
-    @media(max-width: 950px){
-        width: 60%;
-        height: 30%;
+    @media(max-width: 500px){
+        width: 70%;
+        height: 35%;
+        margin-bottom: 3vh;
+
+        img{
+            width: 45vw;
+            height: 100%;
+            margin-top: 0vh;
+        }
+    }
+
+    @media(min-width: 501px) and (max-width: 800px){
+        width: 50%;
+        height: 25%;
         margin-bottom: 3vh;
 
         img{
             width: 35vw;
+            height: 100%;
+            margin-top: 0vh;
+        }
+    }
+
+    @media(min-width: 801px) and (max-width: 950px){
+        width: 50%;
+        height: 30%;
+        margin-bottom: 3vh;
+
+        img{
+            width: 30vw;
             height: 100%;
             margin-top: 0vh;
         }

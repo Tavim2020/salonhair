@@ -24,7 +24,18 @@ const MainButton = styled.button`
         background-color: #9e6f6e;
     }
 
-    @media(max-width: 950px){
+    @media(max-width: 500px){
+        height: 8.5vh;
+        background-color: var(--marsala);
+        border-radius: 10vw;
+        font-size: 6vw;
+
+        &:hover{
+            background-color: var(--marsala);
+        }
+    }
+
+    @media(min-width: 501px) and (max-width: 800px){
         height: 8.5vh;
         background-color: var(--marsala);
         border-radius: 10vw;
