@@ -12,9 +12,9 @@ const LogoMini = styled.img`
     }
 `;
 
-const MiniLogo = ({width, height}) => {
+const MiniLogo = () => {
     return (
-        <LogoMini src={logo} alt={'Mini Logo'} title={'Logo'} style={{ width, height}}/>
+        <LogoMini src={logo} alt={'Mini Logo'} title={'Logo'} />
     )
 }
 

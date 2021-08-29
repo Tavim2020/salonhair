@@ -14,6 +14,7 @@ export const GlobalStorage = ({children}) =>{
     const ContatoContainerScroll = React.useRef(null);
     const [whats, setWhats] = React.useState(false);
     const map = React.useRef(null);
+    const [mobile, setMobile] =  React.useState(false);
 
    
 
@@ -32,6 +33,8 @@ export const GlobalStorage = ({children}) =>{
             whats, 
             setWhats,
             map,
+            mobile,
+            setMobile,
         }}>
             {children}
         </GlobalContext.Provider>

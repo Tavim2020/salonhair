@@ -19,7 +19,7 @@ const Menu = styled.section`
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     animation-timing-function: linear;
-    z-index: 10;
+    z-index: 15;
 
     @keyframes open{
         to{

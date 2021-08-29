@@ -17,6 +17,18 @@ const Contato = styled.section`
         color: var(--white);
         font-family: var(--font-bebas-naue);
     }
+
+    @media(max-width: 950px){
+        width: 100%;
+        height: 140vw;
+        padding-top: 10vw;
+       
+
+        h2{
+
+            font-size: 6vw;
+        }
+    }
 `;
 
 const BoxGeral = styled.div`
@@ -26,11 +38,20 @@ const BoxGeral = styled.div`
     display: flex;
     align-items: center;
     margin-top: 5vw;
+
+    @media(max-width: 950px){
+        width: 90%;
+        flex-direction: column;
+        margin-top: 10vw;
+    }
 `;
 
 const Information = styled.div`
-    width: 50%;
+    width: 50vw;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 
     p{
         width: 77%;
@@ -46,6 +67,23 @@ const Information = styled.div`
         width: 3vw;
         cursor: pointer;
     }
+
+    @media (max-width: 950px){
+        width: 100%;
+        height: 60%;
+
+        p{
+            width: 100%;
+            margin-left: 0%;
+            font-size: 4.5vw;
+        }
+
+        img{
+            margin-top: 12vw;
+            margin-left: 45%;
+            width: 10vw;
+        }
+    }
 `;
 
 const M = styled.div`
@@ -58,7 +96,8 @@ const M = styled.div`
 
 const ContatoContainer = () => {
 
-    const { ContatoContainerScroll, setWhats, map, whats} = React.useContext(GlobalContext);
+    const { ContatoContainerScroll, setWhats, map, whats, mobile} = React.useContext(GlobalContext);
+   
 
     React.useEffect(() => {
         // create map
@@ -82,7 +121,20 @@ const ContatoContainer = () => {
     function sendWhats(){
         setWhats(!whats);
     }
+    const [widthMap, setWidthMap] = React.useState('70%');
+    const [heightMap, setHeightMap] = React.useState('100%');
 
+    React.useEffect(()=>{
+        if(mobile){
+            setWidthMap('100%');
+            setHeightMap('100%');
+        }
+        else{
+            setWidthMap('70%');
+            setHeightMap('100%');
+        }
+
+    }, [mobile])
 
     return (
         <Contato ref={ContatoContainerScroll}>
@@ -105,7 +157,7 @@ const ContatoContainer = () => {
 
                 <M>
 
-                <div id="mapid" style={{ height: '100%', width: '70%'}} ref={map}>
+                <div id="mapid" style={{ height: heightMap, width: widthMap}} ref={map}>
 
                 </div>
 

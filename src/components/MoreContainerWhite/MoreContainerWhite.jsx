@@ -4,11 +4,17 @@ import firstImage from '../../assets/hidratacaoImgOne.jpg';
 import twoImg from '../../assets/hidratacaoImgTwo.jpg';
 import threeImg from '../../assets/twoWoman.jpg';
 import reconstrucao from '../../assets/reconstrucao.jpg';
+import { GlobalContext } from '../../context/GlobalContext';
 
 const Containers = styled.section`
     width: 100vw;
     height: 38.5vw;
     background-color: var(--white);
+
+    @media(max-width: 950px){
+        height: 217vw;
+        flex-direction: column;
+    }
 `;
 
 const Wrapper = styled.div`
@@ -16,6 +22,10 @@ const Wrapper = styled.div`
     width: 90%;
     height: 100%;
     display: flex;
+
+    @media (max-width: 950px){
+        flex-direction: column;
+    }
 `;
 
 const ContainerLeftWhite = styled.div`
@@ -61,6 +71,50 @@ const ContainerLeftWhite = styled.div`
             margin-right: 3vw;
             font-size: 1.5vw;
             font-family: var(--font-open);
+        }
+    }
+
+    @media(max-width: 950px){
+        margin: 0 auto;
+        width: 90%;
+        height: max-content;
+
+        h2{
+            font-size: 6vw;
+            margin-top: 12.5vw;
+        }
+
+      
+
+        p{
+            margin: 0 auto;
+            width: 100%;
+            margin-left: 0%;
+            font-size: 4.6vw;
+            margin-top: 8.5vw;
+            margin-left: 0%;
+            text-align: center;
+            margin-bottom: 6vw;
+        }
+
+        h3{
+            font-size: 4.5vw;
+            margin-top: 3vw;
+        }
+
+        div{
+            display: flex;
+            flex-direction: column;
+
+            li:nth-child(1){
+                margin-left: 0%;
+                
+            }
+            
+            li{
+                margin-right: 0vw;
+                font-size: 4.5vw;
+            }
         }
     }
 `;
@@ -147,7 +201,52 @@ const ContainerRightWhite = styled.div`
         
     }
     
+
+    @media(max-width: 950px){
+        width: 90%;
+        height: 100%;
+
+        .womanSolo{
+            width: 50vw;
+            height: 50vw;
+        }
+        
+        div{
+            width: 100%;
+            height: 75vw;
+            margin-top: 2vw;
+            
+            img{
+                width: 50vw;
+                position: absolute;
+                top: 0%;
+            }
+            
+        }
+    }
     
+`;
+
+const ContainerMobile = styled.div`
+    display: none;
+
+    @media(max-width: 950px){
+        margin: 0 auto;
+        width: 100%;
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 6vw;
+        img{
+            width: 50vw;
+        }
+
+        img:nth-child(1){
+            margin-bottom: 6vw;
+        }
+    }
 `;
 
 const ContainerImageSlide = styled.div`
@@ -156,31 +255,62 @@ const ContainerImageSlide = styled.div`
 
 const MoreContainerWhite = ({reference, slide, reconstruction, hidratacao}) => {
 
+    const {  mobile, setMobile } = React.useContext(GlobalContext);
+
     
     const [stateOneImg, setStateOneImg] = React.useState(true);
     const [stateTwoImg, setStateTwoImg] = React.useState(false);
     const [stateThreeImg, setStateThreeImg] = React.useState(false);
 
+    const setOne = React.useRef(null);
+    const setTwo = React.useRef(null);
+    const setThree = React.useRef(null);
+    const setFour = React.useRef(null);
+
 
     React.useEffect(()=>{
-        setTimeout(function init(){
-            setStateOneImg(false);
-            setStateTwoImg(true)
+        if(window.screen.width > 950){
+            setMobile(false);
+        }
+        else{
+            setMobile(true);
+        }
 
-            setTimeout(()=>{
-                setStateTwoImg(false);
-                setStateThreeImg(true);
+        window.addEventListener('resize', ()=>{
+            if(window.screen.width > 950){
+                setMobile(false);
+            }
+            else{
+                setMobile(true);
+            }
+        })
 
-                setTimeout(()=>{
-                    setStateThreeImg(false);
-                    setStateOneImg(true);
-                    setTimeout(init, 3000)
+        if(mobile === false){
+          setOne.current = setTimeout(function init(){
+                setStateOneImg(false);
+                setStateTwoImg(true)
+
+             setTwo.current =   setTimeout(()=>{
+                    setStateTwoImg(false);
+                    setStateThreeImg(true);
+
+                 setThree.current = setTimeout(()=>{
+                        setStateThreeImg(false);
+                        setStateOneImg(true);
+                     setFour.current = setTimeout(init, 3000)
+                    }, 3000)
+
                 }, 3000)
 
             }, 3000)
-
-        }, 3000)
-    }, [])
+        }
+        else{
+            clearTimeout(setOne.current);
+            clearTimeout(setTwo.current);
+            clearTimeout(setThree.current);
+            clearTimeout(setFour.current);
+        }
+    }, [mobile, setMobile])
 
     return (
         <Containers ref={reference}>
@@ -251,30 +381,45 @@ const MoreContainerWhite = ({reference, slide, reconstruction, hidratacao}) => {
                 </ContainerLeftWhite>
 
 
-                <ContainerRightWhite>
+                {!mobile &&
+                    <ContainerRightWhite>
 
-                    <ContainerImageSlide>
+                            <ContainerImageSlide>
 
-                        {slide && 
-                            <div>
+                                {slide && 
+                                    <div>
 
-                                {stateOneImg && <img src={firstImage} className={'one'} alt={"Tratament for Woman"}/>}
+                                        {stateOneImg && <img src={firstImage} className={'one'} alt={"Tratament for Woman"}/>}
 
-                                {stateTwoImg && <img src={twoImg} className={'two'}alt={'Tratament for Woman'}/>}
+                                        {stateTwoImg && <img src={twoImg} className={'two'}alt={'Tratament for Woman'}/>}
 
-                                {stateThreeImg && <img src={threeImg} className={'three'}alt={'Tratament for Woman'}/>}
+                                        {stateThreeImg && <img src={threeImg} className={'three'}alt={'Tratament for Woman'}/>}
 
-                            </div>
-                        }
+                                    </div>
+                                }
 
-                        {reconstruction && <img className={'womanSolo'} src={reconstrucao} alt="Woman" /> }
-
-
-                    </ContainerImageSlide>
+                                {reconstruction && <img className={'womanSolo'} src={reconstrucao} alt="Woman" /> }
 
 
-                </ContainerRightWhite>
+                            </ContainerImageSlide>
 
+
+                    </ContainerRightWhite>
+                    }
+
+                    <ContainerMobile>
+                        {hidratacao && <img src={twoImg} className={'two'}alt={'Tratament for Woman'}/>}
+
+                        {reconstruction && (
+                            <>
+                                <img className={'womanSolo'} src={reconstrucao} alt="Woman" /> 
+
+                                <img src={threeImg} className={'three'}alt={'Tratament for Woman'} />
+                            </>
+                        
+                        )}
+
+                    </ContainerMobile>
             </Wrapper>
             
         </Containers>

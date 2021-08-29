@@ -155,7 +155,7 @@ const IntrodutionContainerTextAndlogo = () => {
 
             <Logo />
 
-            <h3>A beleza em sua Total Essencia.</h3>
+            <h3>A beleza em sua Total Essência.</h3>
 
             <WrapperWoman>
 

@@ -39,7 +39,9 @@ const ButtonOpenMenu = styled.div`
         height: 10vw;
         position: fixed;
         margin-top: 0vh;
+        top: 0%;
         right: 0%;
+        z-index: 12;
 
         svg{
             width: 7vw;
@@ -118,7 +120,7 @@ const Home = () => {
 
                 <ContainerFirstHome container={'twoText'} reference={threeContainerScroll} slide={true} />
 
-                <MoreContainerWhite reference={fourContainerScroll} reconstruction={true}  slide={false}/>
+                <MoreContainerWhite reference={fourContainerScroll} reconstruction={true}  slide={false} />
 
                 <ContatoContainer />
 
