@@ -17,6 +17,7 @@ const Whats = styled.div`
     z-index: auto;
     animation: ${({menutrue}) => menutrue ? 'moveRight 0ms 1 2s forwards linear' : 'moveLeft 0ms 1 2s forwards linear'};
     transition:  1s;
+    z-index: 16000;
     @keyframes moveRight{
         to{
             left: 25%;
@@ -35,6 +36,7 @@ const Whats = styled.div`
         display: flex;
         align-items: flex-end;
 
+
         div:nth-child(1){
             width: max-content;
             margin-left: 3vw;
@@ -49,7 +51,7 @@ const Whats = styled.div`
                 font-size: 2.8vw;
                 color: var(--white);
                 text-align: center;
-                margin-left: 6vw;
+                margin-left: 2vw;
                 text-decoration: underline;
             }
         }
@@ -129,20 +131,115 @@ const Whats = styled.div`
         }
     }
 
+    @media(max-width: 950px){
+        width: 95%;
+        height: 60%;
+        left: ${({menutrue}) => menutrue ? '2.5%' : '2.5%'};
+        top: 20%;
+        border-width: 1.2vw;
+        animation: ${({menutrue}) => menutrue ? 'none' : 'none'};
+       
+
+        .top{
+            width: 100%;
+            height: 18%;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+
+
+            div:nth-child(1){
+                display: none;
+            }
+            div:nth-child(2){
+                
+                h2{
+                    font-size: 6vw;
+                    margin-left: 0vw;
+                }
+            }
+
+            div:nth-child(3){
+                margin-right: 0vw;
+                img{
+                    width: 11vw;
+                    &:hover{
+                        transform: initial;
+                    }
+                }
+            }
+        }
+
+        .bottom{
+            width: 100%;
+            height: 62%;
+            flex-direction: column;
+            margin-top: 20%;
+
+            div:nth-child(1){
+                width: 90%;
+                height: 50%;
+                margin-bottom: 5%;
+                label{
+                    font-size: 4.5vw;
+                    text-align: center;
+                    margin-bottom: 3vw;
+                }
+
+                textarea{
+                    min-width: 80%;
+                    max-width: 100%;
+                    min-height: 50%;
+                    max-height: 100%;
+                    font-size: 4.7vw;
+                    padding: 2vw;
+                    letter-spacing: 0.1vw;
+                }
+
+            }
+            
+            div:nth-child(2){
+                width: 100%;
+                height: 50%;
+                margin-left: 0vw;
+                margin-top: 10%;
+                button{
+                    width: 40vw;
+                    height: 65%;
+                    font-size: 4.4vw;
+
+                    &:hover{
+                        transform: initial;
+                    }
+                }
+            }
+        }
+
+
+    }
+
 `;
 
 const WhatsContainer = () => {
 
-    const { whats, setWhats, menu } = React.useContext(GlobalContext);
+    const { whats, setWhats, menu, mobile } = React.useContext(GlobalContext);
 
     const [textForWhats, setTextForWhats] = React.useState('');
+    const textAreaInput = React.useRef(null);
 
     function moveToWhats(event){
         event.preventDefault();
-        if(whats && textForWhats){
+        if(whats && textForWhats.trim().length >= 20){
             const numberSchool = +5516993936784;
             window.open(`https://api.whatsapp.com/send?phone=${numberSchool}&text=${textForWhats}`, '_blank')
 
+        }
+        else{
+            alert('Por favor preencha o formulário com no minímo 20 caracteres sem espaços.');
+
+            if(textAreaInput){
+                textAreaInput.current.focus();
+            } 
         }
     }
 
@@ -155,7 +252,7 @@ const WhatsContainer = () => {
         <Whats menutrue={menu}>
             <div className={'top'}>
                 <div>
-                    <MiniLogo width={'9vw'} />
+                    <MiniLogo width={'9vw'}  display={mobile && 'none'}/>
                 </div>
                 
                 <div>
@@ -171,11 +268,12 @@ const WhatsContainer = () => {
             <form className={'bottom'} onSubmit={moveToWhats}>
                     <div>
                         <label htmlFor="textArea">Digite o Que deseja Enviar:</label>
-                        <textarea id="textArea" value={textForWhats.trim()}
-                        cols="30" rows="10" minLength={'20'}
-                         maxLength={'130'} required
+                        <textarea id="textArea" value={textForWhats} ref={textAreaInput}
+                        cols="30" rows="10"
+                         maxLength={'180'} required
                          onChange={({target}) => setTextForWhats(target.value)}/>
                     </div>
+                    {console.log()}
                     <div>
                         <button type={'submit'}>
                             Enviar

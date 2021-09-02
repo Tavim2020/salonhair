@@ -56,7 +56,7 @@ const ButtonOpenMenu = styled.div`
 const Home = () => {
 
     const { menu, setMenu, twoContainerScroll, firstContainerScroll, threeContainerScroll,
-        fourContainerScroll, ContatoContainerScroll, whats, map} = React.useContext(GlobalContext);
+        fourContainerScroll, ContatoContainerScroll, whats} = React.useContext(GlobalContext);
 
     const menuOpen = React.useRef();
 
@@ -87,14 +87,14 @@ const Home = () => {
     }, [threeContainerScroll, twoContainerScroll, fourContainerScroll, ContatoContainerScroll]);
 
 
-    React.useEffect(()=>{
-        if(whats && map.current){
-            map.current.style.zIndex = '-1';
-        }
-        else{
-            map.current.style.zIndex = '1000';
-        }
-    }, [whats, map])
+    // React.useEffect(()=>{
+    //     if(whats && map.current){
+    //         map.current.style.zIndex = '-1';
+    //     }
+    //     else{
+    //         map.current.style.zIndex = '1000';
+    //     }
+    // }, [whats, map])
 
     return (
         <Container>

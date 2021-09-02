@@ -10,11 +10,20 @@ const LogoMini = styled.img`
         width: 80%;
         height: 50%;
     }
+
+    .mini{
+        width: 9vw;
+
+        @media(max-width: 950px){
+
+        }
+    }
 `;
 
-const MiniLogo = () => {
+const MiniLogo = ({width, height, display}) => {
     return (
-        <LogoMini src={logo} alt={'Mini Logo'} title={'Logo'} />
+  
+        <LogoMini src={logo} alt={'Mini Logo'} title={'Logo'} style={{ width, height, display}} />                  
     )
 }
 

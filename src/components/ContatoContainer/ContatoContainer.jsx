@@ -20,12 +20,11 @@ const Contato = styled.section`
 
     @media(max-width: 950px){
         width: 100%;
-        height: 140vw;
+        height: 155vw;
         padding-top: 10vw;
        
 
         h2{
-
             font-size: 6vw;
         }
     }
@@ -41,7 +40,9 @@ const BoxGeral = styled.div`
 
     @media(max-width: 950px){
         width: 90%;
+        height: 123vw;
         flex-direction: column;
+        align-items: flex-start;
         margin-top: 10vw;
     }
 `;
@@ -70,7 +71,7 @@ const Information = styled.div`
 
     @media (max-width: 950px){
         width: 100%;
-        height: 60%;
+        height: 45%;
 
         p{
             width: 100%;
@@ -79,7 +80,7 @@ const Information = styled.div`
         }
 
         img{
-            margin-top: 12vw;
+            margin-top: 8vw;
             margin-left: 45%;
             width: 10vw;
         }
@@ -92,6 +93,14 @@ const M = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media(max-width: 950px){
+        width: 100%;
+        height: 55%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
 `;
 
 const ContatoContainer = () => {
@@ -118,6 +127,7 @@ const ContatoContainer = () => {
         L.marker(position).addTo(mymap);
   }, []);
 
+
     function sendWhats(){
         setWhats(!whats);
     }
@@ -128,6 +138,7 @@ const ContatoContainer = () => {
         if(mobile){
             setWidthMap('100%');
             setHeightMap('100%');
+            
         }
         else{
             setWidthMap('70%');
