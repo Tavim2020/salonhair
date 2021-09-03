@@ -133,7 +133,7 @@ const Whats = styled.div`
 
     @media(max-width: 950px){
         width: 95%;
-        height: 60%;
+        height: 120vw;
         left: ${({menutrue}) => menutrue ? '2.5%' : '2.5%'};
         top: 20%;
         border-width: 1.2vw;
@@ -246,10 +246,10 @@ const WhatsContainer = () => {
     function CloseWhats(){
         setWhats(false);
     }
-   
+
 
     return (
-        <Whats menutrue={menu}>
+        <Whats menutrue={menu} >
             <div className={'top'}>
                 <div>
                     <MiniLogo width={'9vw'}  display={mobile && 'none'}/>
@@ -270,7 +270,7 @@ const WhatsContainer = () => {
                         <label htmlFor="textArea">Digite o Que deseja Enviar:</label>
                         <textarea id="textArea" value={textForWhats} ref={textAreaInput}
                         cols="30" rows="10"
-                         maxLength={'180'} required
+                         maxLength={'180'} required 
                          onChange={({target}) => setTextForWhats(target.value)}/>
                     </div>
                     {console.log()}
